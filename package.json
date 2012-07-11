@@ -1,0 +1,16 @@
+{
+  "author": "",
+  "name": "frst-logging",
+  "version": "0.0.0",
+  "main": "frst-logging.coffee",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.6"
+  },
+  "dependencies": {
+    "frst-mongoose": "git+ssh://git@github.com:frst/frst-mongoose.git"
+  },
+  "devDependencies": {}
+}
