@@ -10,7 +10,13 @@
     "node": "~0.6.6"
   },
   "dependencies": {
-    "frst-mongoose": "git+ssh://git@github.com:frst/frst-mongoose.git"
+    "express": "3.0.0rc2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "plugin": {
+    "consumes": ["database"]
+  },
+  "scripts": {
+    "test": "cake test"
+  }
 }
