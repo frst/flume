@@ -27,13 +27,10 @@ begin_logging = (server, logs_dir)->
 
 module.exports = (server, options)->
 
-        throw new Error("frst-logging must be instantiated with an express server") unless server
-        throw new Error("frst-logging must be instantiated with an environment option") unless options.env
-
-        env = options.env
+        throw new Error("flume must be instantiated with an express server") unless server
 
         # access log & redirect stdout to disk
-        if env == "production" or debug
+        if options.env == "production" or debug
 
                 # Create logs directory if it doesn't yet exists
                 logs_dir = "#{__dirname}/logs"
