@@ -11,16 +11,17 @@ module.exports = (server, options)->
 
         env = options.env
 
-        logger_options =
-                format:
-                format: ':remote-addr - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time',
-                buffer:true,
-                stream: fs.createWriteStream('logs/access.log', {flags: 'a'})
-        server.use(express.logger(logger_options))
-
-        # redirect log out put to disk
+        # access log & redirect stdout to disk
         if env == "production" or debug
-                errorStream = fs.createWriteStream('logs/error.log', {flags: 'a'})
+
+                logger_options =
+                        format: ':remote-addr - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time',
+                        buffer:true,
+                        stream: fs.createWriteStream('logs/access.log', {flags: 'a'})
+
+                server.use(express.logger(logger_options))
+
+                errorStream = fs.createWriteStream('logs/production.log', {flags: 'a'})
 
                 console.log = ()->
                         data = util.inspect(arguments, false, 5) unless typeof arguments == 'string'
