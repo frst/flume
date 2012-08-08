@@ -1,10 +1,10 @@
 {
   "author": "Paul English",
-  "name": "frst-logging",
-  "version": "0.0.3",
-  "main": "frst-logging.coffee",
+  "name": "flume",
+  "version": "0.0.4",
+  "main": "flume.coffee",
   "repository": {
-    "url": "git@git.onfrst.com:frst-logging.git"
+    "url": "git@github.com:frst/flume.git"
   },
   "engines": {
     "node": "~0.6.6"
@@ -15,9 +15,6 @@
   "devDependencies": {
     "mocha": "1.3.2",
     "chai": "1.2.0"
-  },
-  "plugin": {
-    "consumes": ["database"]
   },
   "scripts": {
     "test": "cake test"

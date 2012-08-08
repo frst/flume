@@ -2,18 +2,18 @@ chai = require "chai"
 should = chai.should()
 express = require "express"
 
-describe "The frst-logging component", ->
+describe "The flume logging component", ->
 
         it "should be required without error", ->
-                frstLogging = require "../frst-logging"
+                frstLogging = require "../flume"
 
         it "should attach to an express server", ->
-                frstLogging = require "../frst-logging"
+                frstLogging = require "../flume"
                 server = express()
                 frstLogging(server, {env: "production"})
 
         it "should override default console.log behavior", ->
-                frstLogging = require "../frst-logging"
+                frstLogging = require "../flume"
                 server = express()
                 frstLogging(server, {env: "production"})
                 console.log "test logging"
