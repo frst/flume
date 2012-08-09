@@ -1,7 +1,7 @@
 {
   "author": "Paul English",
   "name": "flume",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "flume.coffee",
   "repository": {
     "url": "git@github.com:frst/flume.git"
