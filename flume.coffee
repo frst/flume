@@ -4,6 +4,7 @@ fs = require "fs"
 
 debug = false
 
+# Internal function
 begin_logging = (server, logs_dir)->
 
         logger_options =
@@ -25,6 +26,7 @@ begin_logging = (server, logs_dir)->
                 console.log("Uncaught exception:\n" + error.message + "\n" + error.stack)
                 process.exit(0)
 
+# Main function
 module.exports = (server, options)->
 
         throw new Error("flume must be instantiated with an express server") unless server
