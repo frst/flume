@@ -17,3 +17,8 @@ describe "The flume logging component", ->
                 server = express()
                 frstLogging(server, {env: "production"})
                 console.log "test logging"
+
+        it "shouldn't require any parameters", ->
+                frstLogging = require "../flume"
+                frstLogging()
+                console.log "no parameters logging"

@@ -7,12 +7,16 @@ debug = false
 # Internal function
 begin_logging = (server, logs_dir)->
 
+        logs_dir = server unless logs_dir
+        logs_dir = "./logs" unless logs_dir
+        server = false unless server
+
         logger_options =
                 format: ':remote-addr - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time',
                 buffer:true,
                 stream: fs.createWriteStream("#{logs_dir}/access.log", {flags: 'a'})
 
-        server.use(express.logger(logger_options))
+        server.use(express.logger(logger_options)) unless server
 
         logStream = fs.createWriteStream("#{logs_dir}/production.log", {flags: 'a'})
 
@@ -26,13 +30,23 @@ begin_logging = (server, logs_dir)->
                 console.log("Uncaught exception:\n" + error.message + "\n" + error.stack)
                 process.exit(0)
 
+findOrCreateDir = (dir, cb)->
+        if err
+                fs.mkdir dir, 0o0777, cb
+        else
+                cb()
+
 # Main function
 module.exports = (server, options)->
 
-        throw new Error("flume must be instantiated with an express server") unless server
+        options = server unless options
+        options = {} unless options
+
+        env = options.env
+        env = process.env.NODE_ENV unless env
 
         # access log & redirect stdout to disk
-        if options.env == "production" or debug
+        if env == "production" or debug
 
                 # Create logs directory if it doesn't yet exists
                 logs_dir = "#{__dirname}/logs"
