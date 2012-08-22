@@ -30,12 +30,6 @@ begin_logging = (server, logs_dir)->
                 console.log("Uncaught exception:\n" + error.message + "\n" + error.stack)
                 process.exit(0)
 
-findOrCreateDir = (dir, cb)->
-        if err
-                fs.mkdir dir, 0o0777, cb
-        else
-                cb()
-
 # Main function
 module.exports = (server, options)->
 
