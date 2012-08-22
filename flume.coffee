@@ -16,7 +16,7 @@ begin_logging = (server, logs_dir)->
                 buffer:true,
                 stream: fs.createWriteStream("#{logs_dir}/access.log", {flags: 'a'})
 
-        server.use(express.logger(logger_options)) unless server
+        server.use(express.logger(logger_options)) if server
 
         logStream = fs.createWriteStream("#{logs_dir}/production.log", {flags: 'a'})
 
