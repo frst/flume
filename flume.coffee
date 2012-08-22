@@ -8,7 +8,7 @@ debug = false
 begin_logging = (server, logs_dir)->
 
         logs_dir = server unless logs_dir
-        logs_dir = "./logs" unless logs_dir
+        logs_dir = "#{process.cwd()}/logs" unless logs_dir
         server = false unless server
 
         logger_options =
@@ -42,8 +42,10 @@ module.exports = (server, options)->
         # access log & redirect stdout to disk
         if env == "production" or debug
 
+                # XXX
+                logs_dir = "#{process.cwd()}/logs"
+
                 # Create logs directory if it doesn't yet exists
-                logs_dir = "#{__dirname}/logs"
                 fs.stat logs_dir, (err)->
                         if err
                                 fs.mkdir logs_dir, 0o0777, (err)-> begin_logging(server, logs_dir)
