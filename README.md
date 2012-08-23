@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/frst/flume.png)](http://travis-ci.org/frst/flume)
 Flume is a tool for standardizing logging in express-style servers. We use this tool to make sure all our production logs are stored in a similar format, and in a known location.
 
 ## Usage
