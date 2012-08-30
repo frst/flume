@@ -21,9 +21,12 @@ begin_logging = (server, logs_dir)->
         logStream = fs.createWriteStream("#{logs_dir}/production.log", {flags: 'a'})
 
         console.log = ()->
-                data = JSON.stringify(arguments)
-                now = new Date()
-                logStream.write "[#{now.toISOString()}] #{data}\n"
+                try
+                        data = JSON.stringify(arguments)
+                        now = new Date()
+                        logStream.write "[#{now.toISOString()}] #{data}\n"
+                catch e
+                        process.stdout.write('flume error: ' + e + '\n')
 
         # log all server errors
         process.on 'uncaughtException', (error)->

@@ -22,3 +22,12 @@ describe "The flume logging component", ->
                 frstLogging = require "../flume"
                 frstLogging()
                 console.log "no parameters logging"
+
+        it "should fail gracefully", ->
+                frstLogging = require "../flume"
+                frstLogging()
+
+                # logging a circular obj
+                obj = {}
+                obj.sub = obj
+                console.log obj
